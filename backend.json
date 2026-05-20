@@ -1,0 +1,118 @@
+
+{
+  "entities": {
+    "CenterSettings": {
+      "title": "إعدادات المركز",
+      "description": "إعدادات الهوية الرسمية للمركز وخيارات الاستعادة للمشرف",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "اسم المركز" },
+        "logoUrl": { "type": "string", "description": "رابط شعار المركز" },
+        "adminEmail": { "type": "string", "description": "بريد المدير" },
+        "recoveryEmail": { "type": "string", "description": "بريد الطوارئ لاستعادة الحساب" },
+        "recoveryPhone": { "type": "string", "description": "رقم جوال الطوارئ (واتساب)" }
+      }
+    },
+    "UserProfile": {
+      "title": "ملف المستخدم",
+      "description": "بيانات الطلاب والمعلمين والمشرفين",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["ADMIN", "MANAGER", "DEPUTY_MANAGER", "SUPERVISOR", "TEACHER", "STUDENT"] },
+        "approved": { "type": "boolean" },
+        "phone": { "type": "string" },
+        "info": { "type": "string" },
+        "photoUrl": { "type": "string" },
+        "halaqaId": { "type": "string" },
+        "startSurah": { "type": "string" },
+        "endSurah": { "type": "string" }
+      }
+    },
+    "Halaqa": {
+      "title": "الحلقة",
+      "description": "بيانات الحلقات القرآنية",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "teacherId": { "type": "string" },
+        "teacher": { "type": "string" },
+        "level": { "type": "string" },
+        "levelAr": { "type": "string" }
+      }
+    },
+    "LogEntry": {
+      "title": "سجل إنجاز",
+      "description": "سجل حفظ أو مراجعة لطالب",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string" },
+        "studentName": { "type": "string" },
+        "type": { "type": "string", "enum": ["MEMORIZATION", "REVISION"] },
+        "surah": { "type": "string" },
+        "ayahRange": { "type": "string" },
+        "grade": { "type": "number" },
+        "performance": { "type": "string", "enum": ["EXCELLENT", "VERY_GOOD", "GOOD", "REPEATED", "NOT_COMMITTED"] },
+        "notes": { "type": "string" },
+        "date": { "type": "string" }
+      }
+    },
+    "StudyPlan": {
+      "title": "خطة دراسية",
+      "description": "خطة الحفظ والمراجعة الدورية للطالب",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string" },
+        "cycleType": { "type": "string", "enum": ["WEEKLY", "MONTHLY"] },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "dayNumber": { "type": "number" },
+              "hifzTask": { "type": "string" },
+              "revisionTask": { "type": "string" }
+            }
+          }
+        },
+        "updatedAt": { "type": "string" }
+      }
+    },
+    "FinancialRecord": {
+      "title": "سجل مالي",
+      "description": "إيراد أو مصروف للمركز",
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["INCOME", "EXPENSE"] },
+        "category": { "type": "string" },
+        "amount": { "type": "number" },
+        "date": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    }
+  },
+  "auth": {
+    "providers": ["password"]
+  },
+  "firestore": {
+    "/settings/center": {
+      "schema": "#/backend/entities/CenterSettings"
+    },
+    "/users/{userId}": {
+      "schema": "#/backend/entities/UserProfile"
+    },
+    "/halaqat/{halaqaId}": {
+      "schema": "#/backend/entities/Halaqa"
+    },
+    "/logs/{logId}": {
+      "schema": "#/backend/entities/LogEntry"
+    },
+    "/plans/{planId}": {
+      "schema": "#/backend/entities/StudyPlan"
+    },
+    "/finance/{recordId}": {
+      "schema": "#/backend/entities/FinancialRecord"
+    }
+  }
+}

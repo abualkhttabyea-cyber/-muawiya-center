@@ -1,0 +1,10 @@
+{
+  "placeholderImages": [
+    {
+      "id": "center-logo",
+      "description": "الشعار الرسمي لمركز معاوية: قوس ذهبي يحتوي على مصحف مفتوح ومئذنتين مع نص مركز معاوية لتحفيظ القرآن الكريم",
+      "imageUrl": "https://picsum.photos/seed/muawiya-official-logo-fixed/800/800",
+      "imageHint": "gold mihrab quran minarets"
+    }
+  ]
+}

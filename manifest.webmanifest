@@ -1,0 +1,24 @@
+
+{
+  "name": "مركز معاويه لتحفيظ القران الكريم وعلومه",
+  "short_name": "مركز معاويه",
+  "description": "النظام السحابي الموحد لإدارة حلقات تحفيظ القرآن الكريم",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0b0d",
+  "theme_color": "#ffd700",
+  "icons": [
+    {
+      "src": "https://picsum.photos/seed/muawiya-logo/192/192",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "https://picsum.photos/seed/muawiya-logo/512/512",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

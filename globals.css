@@ -1,0 +1,78 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 3%;
+    --foreground: 45 20% 98%;
+    --card: 220 20% 5%;
+    --card-foreground: 45 20% 98%;
+    --popover: 220 20% 4%;
+    --popover-foreground: 45 20% 98%;
+    --primary: 45 100% 50%;
+    --primary-foreground: 220 20% 4%;
+    --secondary: 220 15% 10%;
+    --secondary-foreground: 45 100% 50%;
+    --muted: 220 15% 12%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 45 100% 50%;
+    --accent-foreground: 220 20% 4%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 15% 12%;
+    --input: 220 15% 12%;
+    --ring: 45 100% 50%;
+    --radius: 1.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    direction: rtl;
+    overflow-x: hidden;
+  }
+}
+
+.rounded-massive {
+  border-radius: 3rem;
+}
+
+.rounded-extra {
+  border-radius: 2rem;
+}
+
+.watermark-bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vh;
+  height: 90vh;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.fade-slide-in {
+  animation: fadeSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
